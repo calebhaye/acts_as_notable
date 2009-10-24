@@ -1,7 +1,7 @@
-Acts As Commentable
+Acts As Noteable
 =================
 
-Allows for comments to be added to multiple and different models.
+Allows for notes to be added to multiple and different models.
 
 == Resources
 
@@ -11,63 +11,42 @@ Install
 
    * To install as a plugin:
  
-    script/plugin install http://github.com/jackdempsey/acts_as_commentable.git
+    script/plugin install http://github.com/calebhaye/acts_as_noteable.git
 
-   * To install as a gem
-   sudo gem install 
 
-  Merb/Rails
-  
-   * To install as a gem:
-    Run the following if you haven't already:
-    gem sources -a http://gems.github.com
-
-    Install the gem(s):
-    sudo gem install jackdempsey-acts_as_commentable
-
-    add the folloowing line to your environment.rb
-    config.gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable', :source => "http://gems.github.com"
-   
+ Generate your note model:
  
- Generate your comment model:
- 
- script/generate comment
+ script/generate note
  
  Then migrate your database:
  
  rake db:migrate
 
 == Usage
- Merb Users:
- * add 'dependency "acts_as_commentable"' to your init.rb or dependencies.rb if using merb-stack
- 
- * Make your ActiveRecord model act as commentable.
+ * Make your ActiveRecord model act as noteable.
  
  class Model < ActiveRecord::Base
- 	acts_as_commentable
+ 	acts_as_noteable
  end
  
- * Add a comment to a model instance
+ * Add a note to a model instance
  
- commentable = Model.create
- commentable.comments.create(:title => "First comment.", :comment => "This is the first comment.")
+ noteable = Model.create
+ noteable.notes.create(:title => "First note.", :note => "This is the first note.")
 
- * Fetch comments for a commentable model:
+ * Fetch notes for a noteable model:
  
- commentable = Model.find(1)
- comments = commentable.comments.recent.limit(10).all
+ noteable = Model.find(1)
+ notes = noteable.notes.recent.limit(10).all
 
  # Following doesn't work/make sense to me. Leaving for historical sake -- Jack
- # * Each comment reference commentable object
+ # * Each note reference noteable object
  #
  # model = Model.find(1)
- # model.comments.get(0).commentable == model
+ # model.notes.get(0).noteable == model
 
 == Credits
-
+Ported from acts_as_commentable by Cosmin Radoi, Jack Dempsey, Xelipe, Chris Eppstein
 Xelipe - This plugin is heavily influenced by Acts As Taggable.
 
 == More
-
-http://www.juixe.com/techknow/index.php/2006/06/18/acts-as-commentable-plugin/
-http://www.juixe.com/projects/acts_as_commentable

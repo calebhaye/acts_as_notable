@@ -1,2 +1,2 @@
-puts "To create the comment model please run:"
-puts "script/generate comment"
+puts "To create the note model please run:"
+puts "script/generate note"
