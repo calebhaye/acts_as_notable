@@ -1,19 +1,19 @@
 require 'activerecord'
 
-# ActsAsNoteable
+# ActsAsNotable
 module Juixe
   module Acts #:nodoc:
-    module Noteable #:nodoc:
+    module Notable #:nodoc:
 
       def self.included(base)
         base.extend ClassMethods  
       end
 
       module ClassMethods
-        def acts_as_noteable
-          has_many :notes, :as => :noteable, :dependent => :destroy
-          include Juixe::Acts::Noteable::InstanceMethods
-          extend Juixe::Acts::Noteable::SingletonMethods
+        def acts_as_notable
+          has_many :notes, :as => :notable, :dependent => :destroy
+          include Juixe::Acts::Notable::InstanceMethods
+          extend Juixe::Acts::Notable::SingletonMethods
         end
       end
       
@@ -22,22 +22,22 @@ module Juixe
         # Helper method to lookup for notes for a given object.
         # This method is equivalent to obj.notes.
         def find_notes_for(obj)
-          noteable = ActiveRecord::Base.send(:class_name_of_active_record_descendant, self).to_s
+          notable = ActiveRecord::Base.send(:class_name_of_active_record_descendant, self).to_s
          
           Note.find(:all,
-            :conditions => ["noteable_id = ? and noteable_type = ?", obj.id, noteable],
+            :conditions => ["notable_id = ? and notable_type = ?", obj.id, notable],
             :order => "created_at DESC"
           )
         end
         
         # Helper class method to lookup notes for
-        # the mixin noteable type written by a given user.  
+        # the mixin notable type written by a given user.  
         # This method is NOT equivalent to Note.find_notes_for_user
         def find_notes_by_user(user) 
-          noteable = ActiveRecord::Base.send(:class_name_of_active_record_descendant, self).to_s
+          notable = ActiveRecord::Base.send(:class_name_of_active_record_descendant, self).to_s
           
           Note.find(:all,
-            :conditions => ["user_id = ? and noteable_type = ?", user.id, noteable],
+            :conditions => ["user_id = ? and notable_type = ?", user.id, notable],
             :order => "created_at DESC"
           )
         end
@@ -48,7 +48,7 @@ module Juixe
         # Helper method to sort notes by date
         def notes_ordered_by_submitted
           Note.find(:all,
-            :conditions => ["noteable_id = ? and noteable_type = ?", id, self.class.name],
+            :conditions => ["notable_id = ? and notable_type = ?", id, self.class.name],
             :order => "created_at DESC"
           )
         end
@@ -63,4 +63,4 @@ module Juixe
   end
 end
 
-ActiveRecord::Base.send(:include, Juixe::Acts::Noteable)
+ActiveRecord::Base.send(:include, Juixe::Acts::Notable)

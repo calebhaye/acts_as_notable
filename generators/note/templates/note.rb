@@ -1,8 +1,8 @@
 class Note < ActiveRecord::Base
 
-  include ActsAsNoteable::Note
+  include ActsAsNotable::Note
 
-  belongs_to :noteable, :polymorphic => true
+  belongs_to :notable, :polymorphic => true
 
   default_scope :order => 'created_at ASC'
 

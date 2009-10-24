@@ -1,11 +1,11 @@
 require 'rubygems'
 require 'rake/gempackagetask'
 
-PLUGIN = "acts_as_noteable"
-GEM = "acts_as_noteable"
+PLUGIN = "acts_as_notable"
+GEM = "acts_as_notable"
 GEM_VERSION = "2.0.1"
 EMAIL = "unknown@juixe.com"
-HOMEPAGE = "http://www.juixe.com/techknow/index.php/2006/06/18/acts-as-noteable-plugin/"
+HOMEPAGE = "http://www.juixe.com/techknow/index.php/2006/06/18/acts-as-notable-plugin/"
 SUMMARY = "Plugin/gem that provides note functionality"
 
 spec = Gem::Specification.new do |s|

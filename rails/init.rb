@@ -1,2 +1,2 @@
-require File.join(File.dirname(__FILE__), '..', 'lib', 'acts_as_noteable')
+require File.join(File.dirname(__FILE__), '..', 'lib', 'acts_as_notable')
 

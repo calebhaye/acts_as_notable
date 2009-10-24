@@ -1,6 +1,6 @@
 require 'test/unit'
 
-class ActsAsNoteableTest < Test::Unit::TestCase
+class ActsAsNotableTest < Test::Unit::TestCase
   # Replace this with your real tests.
   def test_this_plugin
     flunk

@@ -1,4 +1,4 @@
-Acts As Noteable
+Acts As Notable
 =================
 
 Allows for notes to be added to multiple and different models.
@@ -11,7 +11,7 @@ Install
 
    * To install as a plugin:
  
-    script/plugin install http://github.com/calebhaye/acts_as_noteable.git
+    script/plugin install http://github.com/calebhaye/acts_as_notable.git
 
 
  Generate your note model:
@@ -23,27 +23,27 @@ Install
  rake db:migrate
 
 == Usage
- * Make your ActiveRecord model act as noteable.
+ * Make your ActiveRecord model act as notable.
  
  class Model < ActiveRecord::Base
- 	acts_as_noteable
+ 	acts_as_notable
  end
  
  * Add a note to a model instance
  
- noteable = Model.create
- noteable.notes.create(:title => "First note.", :note => "This is the first note.")
+ notable = Model.create
+ notable.notes.create(:title => "First note.", :note => "This is the first note.")
 
- * Fetch notes for a noteable model:
+ * Fetch notes for a notable model:
  
- noteable = Model.find(1)
- notes = noteable.notes.recent.limit(10).all
+ notable = Model.find(1)
+ notes = notable.notes.recent.limit(10).all
 
  # Following doesn't work/make sense to me. Leaving for historical sake -- Jack
- # * Each note reference noteable object
+ # * Each note reference notable object
  #
  # model = Model.find(1)
- # model.notes.get(0).noteable == model
+ # model.notes.get(0).notable == model
 
 == Credits
 Ported from acts_as_commentable by Cosmin Radoi, Jack Dempsey, Xelipe, Chris Eppstein

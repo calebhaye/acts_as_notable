@@ -1,2 +1,2 @@
-require 'noteable_methods'
+require 'notable_methods'
 require 'note_methods'
